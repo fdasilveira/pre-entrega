@@ -1,25 +1,18 @@
 export class ProductsPage{
     constructor(){
-        this.whitePantsButton = ('[id="whitepants"]')
-        this.modalButton = ('#closeModal')
-        this.redCapButton = ("[value='Red Cap']")
-        this.buttonGoShoppingCart = ('#goShoppingCart')
+        
+        this.modalButton = ('#closeModal');
+       
+        this.buttonGoShoppingCart = ('#goShoppingCart');
     }
-    selectWhitePants() 
-    {
-        cy.get(this.whitePantsButton).click();
-
+    selectProduct(product){
+        cy.get(`button[value='${product}']`).click();
     }
-    clickOnClosemodal() 
+        clickOnClosemodal()
     {
         cy.get(this.modalButton).click();
-
     }
-    selectRedCap()
-    {
-        cy.get(this.redCapButton).click();
-    }
-    clickButtonGoShoppingCart()
+     clickButtonGoShoppingCart()
     {
         cy.get(this.buttonGoShoppingCart).click();
     }
