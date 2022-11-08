@@ -31,6 +31,10 @@ describe('desafio 3', () =>
     it('pre-entrega', () => {
 
         let suma = (productsshop.productOne.Price1) + (productsshop.productTwo.Price2);
+        let Name1 = productsshop.productOne.Name
+        let priceOne = productsshop.productOne.Price1
+        let Name2 = productsshop.productTwo.Name
+        let priceTwo = productsshop.productTwo.Price2
         
         cy.visit('');
         register.clickButtonLogin();
@@ -43,10 +47,10 @@ describe('desafio 3', () =>
         productsPage.selectProduct(productsshop.productTwo.Name);
         productsPage.clickOnClosemodal();
         productsPage.clickButtonGoShoppingCart();
-        shopingCartPage.verifyProduct(productsshop.productOne.Name).should('exist');
-        shopingCartPage.verifyPricesAndProducts(productsshop.productOne.Name,productsshop.productOne.Price1).should('exist');
-        shopingCartPage.verifyProduct(productsshop.productTwo.Name).should('exist');
-        shopingCartPage.verifyPricesAndProducts(productsshop.productTwo.Name,productsshop.productTwo.Price2).should('exist');
+        shopingCartPage.verifyProduct(productsshop.productOne.Name).should("have.text",Name1);
+        shopingCartPage.verifyPricesAndProducts(productsshop.productOne.Name,productsshop.productOne.Price1).should("have.text",`$${priceOne}`);
+        shopingCartPage.verifyProduct(productsshop.productTwo.Name).should("have.text",Name2);
+        shopingCartPage.verifyPricesAndProducts(productsshop.productTwo.Name,productsshop.productTwo.Price2).should("have.text",`$${priceTwo}`);
         shopingCartPage.clickOnShowTotalPrice().click();
         shopingCartPage.checkAcumulatePrice().should('have.text',suma);
     });
